@@ -1,0 +1,36 @@
+REPARAR GRUB SI NO SE DESINTALó/ELIMINó LA PARTICIóN DE LINUX QUE CONTIENE EL SISTEMA OPERATIVO ("/"):
+
+Aplica a la pantalla negra con la leyenda"....entering rescue mode...".
+
+Ingresar los comandos en el promp de grub rescue>
+
+ls
+
+Retorna los discos duros del equipo identificados como hd0, y su partición (hd0,msdos..)
+
+Ingresar el siguiente comando con cada una de las particiones hasta encontrar la partición de formato ext2 o ext4
+
+ls(hd0,msdos1)
+
+Al identificarlo, los siguientes comandos se aplican de forma correcta si es la partición de los archivos del sistema operativo. Si es una partición del home de linux no será posible su ejecución:
+
+set root=(hd0,msdos1)
+
+set prefix=(hd0,msdos1)/boot/grub
+
+insmod normal
+
+normal
+
+De esta forma se recupera el grub de linux, por último reinstalamos el grub con los siguientes comandos desde la consola del sistema operativo:
+
+sudo update-grub
+
+sudo grub-install /dev/sda
+
+Visualizar la pantalla grub al inicio del sistema sin necesidad de presionar shift.
+
+Editar el archivo:
+sudo /etc/default/grub
+
+cambiar la opción del grub "hidden" a "menu"

@@ -1,0 +1,26 @@
+Instalación: 
+1) Try Ubuntu without installing (safe graphics)
+
+La instalación es posible desde la pantalla de prueba. El resto de opciones se caen.
+
+2) Instalación mínima, sin instalar controladores de terceros.
+
+3) Entre a la opcion de redimensionar particiones:
+-click derecho para eliminar la particion existente, del espacio liberado dividí:
+-2000MB para ram en swap área o área de intercambio
+-30000MB para ext4, espacio root  /
+-100000MB para ext4, espacio /home
+
+#Iniciar Ubuntu desde el Menu grub manteniendo shift luego de la pantalla de bios, presionar e y al final de la línea linux agregar
+nouveau.modeset=0
+
+Agregar lo mismo en el archivo
+sido nano /etc/default/grub
+al final de splash pero entre las mismas comillas.
+
+Actualizar el grub
+sudo update-grub
+
+#Instalar codecs de vídeo
+sudo apt install libavcodec-extra
+

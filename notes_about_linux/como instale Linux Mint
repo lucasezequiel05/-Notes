@@ -1,0 +1,19 @@
+Linux Mint Uma xfce Instalación:
+El modo efeciente resulta ser porbar la versión sin instalar y ejecutar el instalador desde el escritorio.
+
+1) Start Linux Mint compatible mode
+
+2) Confirmar la Instalación de software de dispositivos de terceros y códecs de vídeos.
+
+3) Entre a la opcion de redimensionar particiones:
+-click derecho para eliminar la particion existente, del espacio liberado dividí:
+-2000MB para ram en swap área o área de intercambio
+-30000MB para ext4, espacio root  /
+-100000MB para ext4, espacio /home
+
+# Luego de la pantalla de bios presionar SHIFT hasta que se visualice la pantalla GRUB
+
+nomodeset funciona, nouveau.modeset=0 no funcionó.
+
+Desde el menú inicio en se accede a Gestor de Controladores y en la solapa correspondiente a la tarjeta gráfica se realiza el cambio a los driver privativos.
+

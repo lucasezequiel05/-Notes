@@ -1,0 +1,35 @@
+
+
+Con el comando:
+lsusb
+se muestra una Lista de todos los dispositivos conectados.
+
+El siguiente comando lista todos los dispositivos conectados y discos
+ls -l /dev/sd*
+
+Si primero lo ejecutamos sin insertar la memoria usb, podriamos encontrar solo dispositivos sda. Luego de conectar el usb y ejecutar el comando, en mi caso se agrega el dispositivo sdb y una partición sdb1 que corresponde a mi pendrive.
+
+Antes de montar la unidad debemos crear una carpeta que alojara los archivos de la memoria usb.
+
+sudo mkdir /media/usb
+Siendo usb el nombre que designe para una subcarpeta.
+
+Luego ejecuto el comando mount que recibe como parámetro el formato en el que esta formateada la usb, la ubicación donde esta se encuentra y la ubicación de la carpeta creada que alojará el contenido.
+
+sudo mount -t vfat /dev/sdb1 /media/usb
+
+Siendo -t vfat para formato Fat32. 
+En caso de ntfs: -t ntfs-3g.
+Si es ext4: -t ext4.
+
+Para copiar los archivos al pc ejecutamos el comando cp -r indicando la carpeta creada y la carpeta de destino
+
+cp -r /media/usb/copia_ubuntu /home/linux/
+Siendo copia_ubuntu el nombre de solo una carpeta del usb que nos interesa.
+
+Para copiar varios archivos del pc a la memoria se indica el nombre de los archvos separados por un espacio, al final la ruta hacia la ubicación donde se monto la usb.
+cp 'como abrir una memoria usb' 'como instale ubuntu' /media/usb
+
+Para desmontar ejecutamos el comando umount seguido de la ruta donde montamos la usb.
+sudo umount /media/usb
+
